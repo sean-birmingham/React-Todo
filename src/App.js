@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoList from './components/TodoList';
+import './components/Todo.css';
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -24,11 +25,27 @@ class App extends React.Component {
       ]
     };
   }
+
+  toggleTodo = (todoId) => {
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === todoId) {
+          return {
+            ...todo,
+            completed: !todo.completed
+          };
+        } else {
+          return todo;
+        }
+      })
+    });
+  };
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} toggleTodo={this.toggleTodo} />
       </div>
     );
   }
