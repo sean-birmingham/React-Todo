@@ -29,9 +29,9 @@ export class TodoForm extends React.Component {
             placeholder='Enter a todo'
             value={this.state.todo}
             onChange={this.handleChange}
-            required
           />
           <button type='submit'>Add Todo</button>
+          <button onClick={this.props.clearCompleted}>Clear completed</button>
         </form>
       </div>
     );
